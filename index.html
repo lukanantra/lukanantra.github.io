@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lukanantra | Official Portfolio</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+background:#0c0c0c;
+color:#eee;
+font-family:Arial,sans-serif;
+}
+main{
+max-width:650px;
+margin:auto;
+padding:35px 20px;
+}
+header{text-align:center;padding:25px 0}
+.logo{
+width:110px;
+height:110px;
+object-fit:contain;
+}
+h1{
+font-family:Georgia,serif;
+color:#d4b477;
+font-size:27px;
+letter-spacing:2px;
+}
+.subtitle{
+color:#bda577;
+font-size:11px;
+letter-spacing:3px;
+line-height:2;
+}
+h2{
+font-family:Georgia,serif;
+color:#d4b477;
+font-size:21px;
+}
+.intro{
+text-align:center;
+color:#aaa;
+font-size:14px;
+line-height:1.8;
+}
+hr{
+border:0;
+border-top:1px solid #53432c;
+margin:28px 0;
+}
+.segment{
+display:flex;
+align-items:center;
+width:100%;
+padding:19px 16px;
+margin:10px 0;
+border:1px solid #655132;
+border-radius:8px;
+background:#151412;
+color:#ead8b6;
+text-align:left;
+font-size:14px;
+cursor:pointer;
+}
+.segment:hover{background:#292217}
+.number{
+color:#c5a059;
+margin-right:15px;
+font-size:12px;
+}
+.arrow{margin-left:auto;padding-left:10px}
+dialog{
+background:#101010;
+color:#eee;
+border:1px solid #c5a059;
+border-radius:12px;
+width:95%;
+max-width:850px;
+max-height:90dvh;
+padding:15px;
+}
+dialog::backdrop{
+background:rgba(0,0,0,.9);
+}
+dialog img{
+width:100%;
+height:auto;
+margin:10px 0;
+}
+.close{
+position:sticky;
+top:0;
+display:block;
+margin-left:auto;
+background:#c5a059;
+border:0;
+border-radius:5px;
+padding:10px 16px;
+cursor:pointer;
+}
+.social{
+display:block;
+text-decoration:none;
+text-align:center;
+color:#d4b477;
+border:1px solid #53432c;
+padding:14px;
+margin:10px 0;
+border-radius:8px;
+}
+footer{
+text-align:center;
+color:#888;
+font-size:11px;
+line-height:2;
+margin-top:35px;
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+<img class="logo" src="logo.png"
+alt="Lukanantra Production"
+onerror="this.style.display='none'">
+<h1>LUKANANTRA PRODUCTION</h1>
+<div class="subtitle">EST. 2020</div>
+<div class="subtitle">
+MUSIC • EDUCATION • CREATIVE SOLUTIONS
+</div>
+</header>
+
+<p class="intro">
+Official Professional Portfolio<br>
+Musical Journey & Creative Hub
+</p>
+
+<hr>
+<h2>Explore My Portfolio</h2>
+<div id="portfolio"></div>
+
+<hr>
+<h2>Connect With Me</h2>
+
+<a class="social"
+href="https://wa.me/60199774062">
+WhatsApp — Professional Enquiries
+</a>
+
+<a class="social"
+href="https://www.instagram.com/lukanantra/">
+Instagram — @lukanantra
+</a>
+
+<a class="social"
+href="https://www.tiktok.com/@lukanantra">
+TikTok — Lukanantra
+</a>
+
+<a class="social"
+href="https://www.tiktok.com/@lukastudiooo">
+TikTok — LukaStudio
+</a>
+
+<a class="social"
+href="https://youtube.com/@lukanantra9513">
+YouTube — Lukanantra Production
+</a>
+
+<a class="social"
+href="mailto:lukanantraproduction@gmail.com">
+Email — Professional Enquiries
+</a>
+
+<footer>
+LUKANANTRA PRODUCTION<br>
+SSM: LA0040337-K<br>
+© 2026 Lukanantra Production.<br>
+All Rights Reserved.
+</footer>
+</main>
+
+<dialog id="viewer">
+<button class="close"
+onclick="document.getElementById('viewer').close()">
+Close ✕
+</button>
+<h2 id="sectionTitle"></h2>
+<div id="artwork"></div>
+</dialog>
+
+<script>
+const sections = [
+"About Lukanantra",
+"Professional Profile",
+"Services & Expertise",
+"Music Coaching & Education",
+"Awards & Artistic Recognition",
+"Performances & Stage Career",
+"Music Production & Creative Projects",
+"Official Discography",
+"International Involvements",
+"Professional Summary & Digital Presence",
+"Gallery"
+];
+
+const portfolio = document.getElementById("portfolio");
+
+sections.forEach((name,i)=>{
+const number=String(i+1).padStart(2,"0");
+const button=document.createElement("button");
+button.className="segment";
+button.innerHTML=
+`<span class="number">${number}</span>
+${name}<span class="arrow">›</span>`;
+button.onclick=()=>openSection(i);
+portfolio.appendChild(button);
+});
+
+function openSection(i){
+const viewer=document.getElementById("viewer");
+const artwork=document.getElementById("artwork");
+document.getElementById("sectionTitle").textContent=sections[i];
+artwork.innerHTML="";
+const number=String(i+1).padStart(2,"0");
+const img=document.createElement("img");
+img.src="segment"+number+".png";
+img.alt=sections[i];
+img.onerror=()=>{
+artwork.textContent="Portfolio content coming soon.";
+};
+artwork.appendChild(img);
+viewer.showModal();
+viewer.scrollTop=0;
+}
+</script>
+</body>
+</html>
