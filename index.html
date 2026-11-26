@@ -218,23 +218,39 @@ ${name}<span class="arrow">›</span>`;
 button.onclick=()=>openSection(i);
 portfolio.appendChild(button);
 });
+const posters = {
+  0: [
+    "6B0DE0F7-9992-41AB-9398-B4579FC25052.png",
+    "A00849F6-71FB-4C4A-8661-4B921FB6D550.png"
+  ]
+};
 
 function openSection(i){
-const viewer=document.getElementById("viewer");
-const artwork=document.getElementById("artwork");
-document.getElementById("sectionTitle").textContent=sections[i];
-artwork.innerHTML="";
-const number=String(i+1).padStart(2,"0");
-const img=document.createElement("img");
-img.src="segment"+number+".png";
-img.alt=sections[i];
-img.onerror=()=>{
-artwork.textContent="Portfolio content coming soon.";
-};
-artwork.appendChild(img);
-viewer.showModal();
-viewer.scrollTop=0;
-}
-</script>
+  const viewer = document.getElementById("viewer");
+  const artwork = document.getElementById("artwork");
+
+  document.getElementById("sectionTitle").textContent = sections[i];
+
+  artwork.innerHTML = "";
+
+  const files = posters[i] || [];
+
+  if(files.length === 0){
+    artwork.textContent = "Portfolio content coming soon.";
+  }
+
+  files.forEach(file => {
+    const img = document.createElement("img");
+    img.src = file;
+    img.alt = sections[i];
+    img.style.width = "100%";
+    img.style.display = "block";
+    img.style.marginBottom = "15px";
+    artwork.appendChild(img);
+  });
+
+  viewer.showModal();
+  viewer.scrollTop = 0;
+}</script>
 </body>
 </html>
